@@ -12,3 +12,8 @@ sd.default.channels = 2
 myRecording = sd.rec(int(duration * fs))
 sd.wait()
 write('output.wav', fs, myRecording)
+
+curl https://api.audd.io/ \
+    -F api_token='cc8076adf56f1a5978cf720f4787018e' \
+    -F url='https://audd.tech/example.mp3' \
+    -F return='apple_musiec,spotify'
