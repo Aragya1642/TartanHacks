@@ -16,9 +16,9 @@ sd.default.samplerate = fs
 sd.default.channels = 2
 
 # Perform recording and save as a wav file
-# myRecording = sd.rec(int(duration * fs))
-# sd.wait()
-# write('output.wav', fs, myRecording)
+myRecording = sd.rec(int(duration * fs))
+sd.wait()
+write('output.wav', fs, myRecording)
 
 # Open the wav file and extract data
 wavLocation = "output.wav"
@@ -30,8 +30,28 @@ t = 1 * np.arange(Sample_RATE * duration)
 
 # Calculate the fourier transform of the sound wave
 yf = fft(data[:Sample_RATE * duration])
-xf = fftfreq(Sample_RATE * duration, 1 / Sample_RATE)
+xf = fftfreq(Sample_RATE * duration, 1 / Sample_RATE)[:(Sample_RATE * duration)//2]
 
+# Plot the transformation
+plt.plot(xf, np.abs(yf))
+plt.xlim([0, 3e3])
+plt.show()
+
+
+################################################ - Does not work
+# for i in range(0, len(xf)):
+#   print(yf[i])
+
+# # Create our dictionary
+# myDict = {}
+# for i in range(0, len(xf)):
+#     myDict.update({yf[i], xf[i]})
+
+# # Sort the dictionary
+# myDict = sorted(myDict)
+
+# for key in myDict:
+#     print (key, ": ", myDict[key])
 
 
 # # Map the frequencies to piano keys
