@@ -32,6 +32,11 @@ t = 1 * np.arange(Sample_RATE * duration)
 yf = fft(data[:Sample_RATE * duration])
 xf = fftfreq(Sample_RATE * duration, 1 / Sample_RATE)
 
+# 2 different techniques to try for sorting
+#method 1
+#In[data.length]: for xf, yf in od.items(): print(xf,yf)
+#method 2
+#dict(sorted(yf))
 
 
 # # Map the frequencies to piano keys
